@@ -1,20 +1,40 @@
-# In the context of neural networks, a batch is a subset of the total training data that is used in one iteration of the training process. During each iteration, the neural network processes the batch of data, updates its weights, and then moves on to the next batch.
-
-# Batching is used in deep learning because it can reduce the memory requirements of the training process, as well as make the training process more computationally efficient. Additionally, batching can also lead to more stable weight updates, as the weights are updated based on the average of the gradients across a batch of examples, rather than on a single example.
-
-# The size of the batch, also known as the batch size, is a hyperparameter that can be tuned to optimize the performance of a neural network. A smaller batch size can lead to more frequent weight updates and allow the network to more quickly adapt to the training data, but it can also lead to more noise in the weight updates. A larger batch size can lead to more stable weight updates, but it can also make the network more slow to adapt to the training data. The ideal batch size will depend on the size of the training data, the computational resources available, and the specific requirements of the problem being solved.
-
 import numpy as np
 
-inputs = [1, 2, 3, 2.5]
-weights = [[0.2, 0.8, -0.5, 1.0], [0.5, -0.91, 0.26, -0.5], [-0.26, -0.27, 0.17, 0.87]]
-biases = [ 2, 3, 0.5 ]
+np.random.seed(0)
 
-output = np.dot(weights, inputs) + biases
-"""
- the output variable works under the hood: 
- np.dot([1,2,3], [4,5,6]) = 1*4 + 2*5 + 3*6 = 32
- np.dot(weights, inputs) = [np.dot(weights[0], inputs), np.dot(weights[1], inputs), np.dot(weights[2], inputs)] = [2.8, -1.79, 1.85]
- np.dot(weights, inputs) + biases = [2.8, -1.79, 1.85] + [ 2, 3, 0.5 ] = [4.8, 1.21, 2.385]
-"""
-print(output)
+X = [
+        [1, 2, 3, 2.5],
+        [2.0, 5.0, -1.0, 2.0],
+        [-1.5, 2.7, 3.3, -0.8]
+    ]
+
+class Layer_Dense:
+     def __init__(self, n_inputs, n_neurons):
+            #u must pass to randn method the length of the inputs neurons and the total of neurons you want to create
+          self.weights = 0.10 * np.random.randn(n_inputs,n_neurons)
+          self.biases = np.zeros((1, n_neurons))
+     def forward(self):
+          pass
+print(np.random.randn(4,3))
+
+# weights = [[0.2, 0.8, -0.5, 1.0], 
+#            [0.5, -0.91, 0.26, -0.5], 
+#            [-0.26, -0.27, 0.17, 0.87]
+#         ]
+
+# biases = [ 2, 3, 0.5 ]
+
+# weights2 = [[0.1, -0.14, 0.5], 
+#            [-0.5, 0.12, -0.33], 
+#            [-0.44, 0.73, -0.13]
+#         ]
+
+# biases2 = [ -1, 2, -0.5 ]
+
+
+# layer1_outputs = np.dot(inputs, np.array(weights).T) + biases
+
+# #Layer1 output becomes the inputs of the layers2 output
+# layer2_outputs = np.dot(layer1_outputs, np.array(weights2).T) + biases2
+
+# print(layer2_outputs)
